@@ -24,9 +24,15 @@ export default (app: express.Application): void => {
    */
   useExpressServer(app, {
     //set up base path
-    routePrefix: 'api/v1/',
+    routePrefix: '/api/v1',
     defaultErrorHandler: false, // disable default error handler
     //register all controllers
     controllers: [process.cwd() + '/src/**/*.controller.ts'],
+
+     //register all middlewares
+     middlewares: [process.cwd() + '/src/**/*.middleware.ts'],
+
+     //register all interceptors
+     interceptors: [process.cwd() + '/src/**/*.interceptor.ts'],
   });
 };

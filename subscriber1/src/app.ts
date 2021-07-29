@@ -3,7 +3,29 @@ import express from 'express';
 import http from 'http';
 import Logger from './loaders/logger';
 import loader from './loaders';
+import redis from 'redis';
+import config from './config';
+import dotenv from 'dotenv';
+dotenv.config();
+const store = require('data-store')({ path: config.filePath });
+
 const app = express();
+
+const client = redis.createClient({
+  host: process.env.REDIS_SERVER,
+  port: parseInt(process.env.REDIS_PORT),
+});
+const subscriber = client;
+subscriber.on('pmessage', function (pattern, channel, message) {
+  if (store.has(channel)) {
+    console.log({
+      topic: channel,
+      data: JSON.parse(message)
+    });
+  }
+});
+
+subscriber.psubscribe('*');
 
 // /**
 //  * Use TypeDI as TypeORM dependency injector
