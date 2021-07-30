@@ -1,50 +1,11 @@
 version: '2'
 services:
-  publisher:
-    build: 
-      context: ./publisher/
-      dockerfile: ./Dockerfile
-    image: publisher:latest
-    ports:
-      - "8080:8000"
-    volumes:
-      - .:/app
-    env_file: publisher/.env
-    working_dir: /app
-    command: sh -c ' cd publisher && php artisan key:gen && php artisan serve --host 0.0.0.0'
-    depends_on:
-      - redis-server
-    links:
-      - redis-server
-    networks:
-    - app-network
-
-  # subscriber:
-  #   build: 
-  #     context: ./subscriber1/
-  #     dockerfile: ./Dockerfile
-  #   image: subscriber:latest
-  #   ports:
-  #       - "3000:3000"
-  #   volumes:
-  #     - ./subscriber1:/app
-  #   environment:
-  #     PORT: 3000
-  #     REDIS_SERVER: "redis-server"
-  #     REDIS_PORT: 6379
-  #   depends_on:
-  #     - redis-server
-  #   links:
-  #     - redis-server
-  #   networks:
-  #     - app-network
-
   redis-server:
     image: "redis:alpine"
     container_name: redis_cache
     command: redis-server --appendonly yes
     ports:
-      - "6379:6379"
+      - "9000:6379"
     expose:
       - 6379
     restart:

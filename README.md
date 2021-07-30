@@ -1,33 +1,19 @@
 # Simple publisher subscriber application
-# Setup Database
-Open up the .env file, replace the values shown below with your database configuration.
+# One time startup
 ```bash
-DB_HOST=your database host
-DB_DATABASE=your database name
-DB_USERNAME=your database username
-DB_PASSWORD=your database user password
-
+ bash server.sh
 ```
-
-# Basic setup
+# Manual publisher setup
+1. navigate to publisher folder and run the following commands
 Install dependencies
 ```bash
  Composer install
-```
-# Run Migrations
-```bash
- php artisan migrate
-```
-# Seed Data
-```bash
- php artisan adverts:poll
 ```
 # Generate Encryption key
 ```bash
  php artisan key:gen
 ```
 # Start Application
-
 ```bash
  php artisan serve
 ```
@@ -35,23 +21,25 @@ Install dependencies
 ```bash
  ./vendor/bin/phpunit
 ```
-
-# Run on Docker
-Navigate to the directory on your terminal and run the command below
+# Manual Subscriber setup
+Install dependencies
+```bash
+ yarn install or npm install
+```
+start server
+```bash
+ yarn start or npm start
+```
+# Start Redis server
+Fron root directory, run
 
 ```bash
- docker-compose up -d or docker compose up -d
+ docker-compose up -d
 ```
-# Endpoint
-1. Local base url - http://localhost:8000/api/rooms
-2. Docker base url - http://localhost:8080/api/rooms
-# Filter Params
-1. page - for pagination
-2. limit - limit results default is 20
-3. price_from - set minimum price to filter
-4. price_to - set maximum price to filter
-
-<img src="postman.JPG"></a></p>
+# Publisher Endpoint
+1. POST - http://localhost:8000/api/pulisher/{topic}
+# Subscriber Endpoint
+2. POST - http://localhost:3000/api/v1/subscriber/{topic}
 # Author
 Anyaso Franklin <br />
 franko172000@gmail.com
