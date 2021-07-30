@@ -4,7 +4,7 @@
  bash server.sh
 ```
 # Manual publisher setup
-1. navigate to publisher folder and run the following commands
+1. cd publisher to folder and run the following commands
 Install dependencies
 ```bash
  Composer install
@@ -22,7 +22,7 @@ Start Application
  ./vendor/bin/phpunit
 ```
 # Manual Subscriber setup
-Install dependencies
+cd to subscriber1 and Install dependencies
 ```bash
  yarn install or npm install
 ```
