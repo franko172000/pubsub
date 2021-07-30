@@ -4,7 +4,7 @@
  bash server.sh
 ```
 # Manual publisher setup
-1. cd publisher to folder and run the following commands
+1. cd to publisher folder and run the following commands
 Install dependencies
 ```bash
  Composer install
