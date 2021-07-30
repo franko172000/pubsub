@@ -9,11 +9,11 @@ Install dependencies
 ```bash
  Composer install
 ```
-# Generate Encryption key
+Generate Encryption key
 ```bash
  php artisan key:gen
 ```
-# Start Application
+Start Application
 ```bash
  php artisan serve
 ```
